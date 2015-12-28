@@ -119,7 +119,22 @@ body {
     text-align: justify;
     text-justify:inter-ideograph;
 }
-            
+ 
+.block {
+  height: 100%;
+}
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+
+  /* For visualization 
+  background: #808080; width: 5px;
+  */
+}
         
 .envelope {
  //z-index: 2;
@@ -127,6 +142,8 @@ body {
   width: 512px;
   height: 748px;
   left: 50%;
+      display: inline-block;
+  vertical-align: middle;
   margin-left: -275px;
   perspective: 1024px;
   transform-style: preserve-3d;
@@ -390,50 +407,10 @@ envelope cover css
     }
 
 
-/*tutorial mask*/
-	ul{
-			list-style: none outside none;
-		    padding-left: 0;
-            margin: 0;
-		}
-
-		.content-slider li{
-		    text-align: center;
-		    color: #FFF;	
-           line-height: 200px;
-		}
-
-		
-.bgCover { 
-    background:#000; 
-    position:absolute; 
-    left:0; 
-    top:0; 
-    display:none; 
-    overflow:hidden; 
-    text-align: center; 
-    z-index: 999; 
-    font-size:200%;
-    color:white;
-}
-
-.overlayBox {
-	position:absolute;
-	display:none;
-	width:550px;
-    z-index: 999;
-    top: 100px;
-}
-
-.closeLink {
-	float:right;
-	margin-right:-10px;
-	color:white ;
-	font-weight: bold; 
-	font-size:150%;
-}
 
 
+
+/*background love*/
 .bg_heart {
  //   position: relative;
     top: 0;
