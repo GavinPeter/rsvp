@@ -1,0 +1,434 @@
+
+/*animation*/   
+@-webkit-keyframes new {
+  0% {
+    left: 0%;
+    margin-left: -550px;
+  }
+  100% {
+    left: 50%;
+    margin-left: -275px;
+  }
+}
+
+@keyframes new {
+  0% {
+    left: 0%;
+    margin-left: -550px;
+  }
+  100% {
+    left: 50%;
+    margin-left: -275px;
+  }
+}
+
+@-webkit-keyframes open {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0);
+  }
+  33.333% {
+    transform: translate3d(-100%, 0, 0) rotateY(-180deg);
+  }
+  66.666% {
+    transform: translate3d(-100%, 0, 0) rotateY(-180deg);
+  }
+  100% {
+    transform: translate3d(-100%, 748px, 0) rotateY(-180deg);
+  }
+}
+
+@keyframes open {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0);
+  }
+  33.333% {
+    transform: translate3d(-100%, 0, 0) rotateY(-180deg);
+  }
+  66.666% {
+    transform: translate3d(-100%, 0, 0) rotateY(-180deg);
+  }
+  100% {
+    transform: translate3d(-100%, 748px, 0) rotateY(-180deg);
+  }
+}
+
+
+@-webkit-keyframes flap-open {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+  50% {
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+  100% {
+    transform: rotateX(-180deg);
+    z-index: -1;    
+  }
+}
+@keyframes flap-open {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+  50% {
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+  100% {
+    transform: rotateX(-180deg);
+    z-index: -1;    
+  }
+}
+
+@-webkit-keyframes letter-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    box-shadow: inset 0 0px 30px -5px #b08c5b, 0 0 10px -5px;
+  }
+  100% {
+    transform: translate3d(0, -748px, 0);
+    box-shadow: inset 0 0px 30px -5px #a87e50, 0 0 20px -5px;
+  }
+}
+@keyframes letter-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    box-shadow: inset 0 0px 30px -5px #b08c5b, 0 0 10px -5px;
+  }
+  100% {
+    transform: translate3d(0, -748px, 0);
+    box-shadow: inset 0 0px 30px -5px #a87e50, 0 0 20px -5px;
+  }
+}
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: lightpink;
+  position: relative;
+  overflow: hidden;
+    //font-family: DFKai-sb;
+  font: 1.673em "標楷體";
+    color: #acd8bf;
+    text-align: justify;
+    text-justify:inter-ideograph;
+}
+            
+        
+.envelope {
+ //z-index: 2;
+  position: relative;
+  width: 512px;
+  height: 748px;
+  left: 50%;
+  margin-left: -275px;
+  perspective: 1024px;
+  transform-style: preserve-3d;
+  transform-origin: right center;
+  transition: transform 1s ease;
+    -webkit-transition:  transform 1s ease;
+}
+
+.envelope .front, .envelope .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 5px;
+  box-shadow: inset 0 0 30px -5px #a87e50, 0 0 20px -5px;
+}
+.envelope .front {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    z-index: 1;
+}
+/*
+.envelope .front:focus {
+  outline: none;
+}*/
+
+.envelope .back .sticker {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      left: 40%;
+      top: 10px;
+      padding: 10px;
+}
+
+.envelope .back .sticker:after {
+  content: url(../img/sticker.png);
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 40%;
+}
+
+
+.envelope .back {
+  transform: rotateY(180deg) translate3d(0, 0, 1px);   
+}
+
+.envelope .back .flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.envelope .back .flap:before {
+  content: "";
+  position: absolute;
+  background-color: red;
+  box-shadow: inset 0 0 30px -7px #a87e50;
+}
+
+.envelope .back .top-flap:before, .envelope .back .bottom-flap:before {
+  width: 512px; 
+}
+
+.envelope .back .top-flap {
+  z-index: 15;
+  transform-origin: top center;
+}
+
+.envelope .back .top-flap:before {
+    height: 60px;
+    -moz-border-bottom-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 2px 2px 2px #888888;
+}
+.envelope .back .bottom-flap {
+  z-index: 4;
+  
+}
+.envelope .back .bottom-flap:before {
+    height: 748px; 	
+}
+
+.envelope .back .sticker {
+  z-index: 16;
+  transform-origin: top center;
+}
+
+
+.envelope .back .letter {
+ z-index: 0;
+  position: absolute;
+  right: 50%;
+    width: 512px;
+    height: 748px;
+}
+
+.envelope.new {
+  animation: new 1s forwards;
+  -webkit-animation: new 1s forwards;
+}
+
+.envelope.open {
+  animation: open 3s forwards;
+  -webkit-animation: open 3s forwards;
+}
+
+
+/* for IE 9 */
+.envelope.open .back {
+  z-index: 2; 
+}
+
+.envelope.open .top-flap {
+  animation: flap-open 1s 1s forwards;
+  -webkit-animation: flap-open 1s 1s forwards;    
+}
+.envelope.open .letter {
+  animation: letter-out 1s 2s forwards;
+  -webkit-animation: letter-out 1s 2s forwards;
+}
+
+/*
+wedding card
+*/      
+section {
+	-ms-writing-mode: tb-rl; /* old syntax. IE */
+	-webkit-writing-mode: vertical-rl;
+	-moz-writing-mode: vertical-rl;
+	-ms-writing-mode: vertical-rl;
+	writing-mode: vertical-rl; /* new syntax */
+        -moz-column-width:1em; /*欄位寬度*/
+        -moz-column-gap:1em;　/*欄位間距*/          
+}
+
+section .text{
+        display:inline-block;
+        vertical-align:middle;
+}
+  
+
+.cover_page{
+        width: 512px;
+        height: 748px;
+         cursor:move;
+}
+    
+    
+.hard{
+        background:  red;
+       
+}
+
+/*
+right page
+*/    
+    section .indent {
+			text-indent: 60px;
+		
+    }
+       
+    section .welcome{
+         text-indent: 30px;
+         font-size: 32pt;
+        
+    }
+    
+    section .bottom{
+        margin-top: 10mm;
+         font-size: 32pt;
+        
+    }
+
+   section .parents{
+        margin-top: 7.25em;
+  }
+    
+    section .invite{
+        text-indent: 120px;
+        margin-bottom: 12px;
+    }
+    
+     section .invite_place{
+        text-indent: 72px;
+         color: #acd8bf;
+    }
+  
+     section .invite_text{
+        font-size: 1.25rem;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: #acd8bf;        
+    }
+
+/*
+left page
+*/
+    section .map{
+         margin-top: 50px;
+    }
+            
+/*
+envelope cover css
+*/
+    #envelop_img{
+        width: 160px;
+        margin-top: 15px;
+        margin-left: 25px;    
+    }
+    section .receiver_bottom{
+      font-size:32pt;
+      position: absolute;
+      top: 550px;
+      right: 40%;
+    }
+    section .receiver{
+        font-size:32pt;  
+        color:black;
+        position: absolute;
+        //top: 250px;
+        right: 40%;
+    }
+    section .addr{
+      font-size: 75%;
+        
+    }
+     section .Changfamilyname{
+     /* padding-top: 13%;//5.625rem; //98px*/
+     position: absolute;
+      top: 570px;
+      left: 27%;
+    }
+
+     section .Chenfamilyname{
+     /* padding-top: 13%;//5.625rem; //98px*/
+     position: absolute;
+      top: 570px;
+      left: 11%;
+    }
+      
+
+    section .number{
+       -webkit-transform: rotate(-90deg);
+         -ms-transform: rotate(-90deg); /* IE 9 */
+        -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+        transform: rotate(-90deg);
+      font-size:80%;
+        margin-right: 0.250rem;
+    }
+
+    section .offset{
+        margin-right: 0.250rem;
+
+    }
+
+
+/*tutorial mask*/
+	ul{
+			list-style: none outside none;
+		    padding-left: 0;
+            margin: 0;
+		}
+
+		.content-slider li{
+		    text-align: center;
+		    color: #FFF;	
+           line-height: 200px;
+		}
+
+		
+.bgCover { 
+    background:#000; 
+    position:absolute; 
+    left:0; 
+    top:0; 
+    display:none; 
+    overflow:hidden; 
+    text-align: center; 
+    z-index: 999; 
+    font-size:200%;
+    color:white;
+}
+
+.overlayBox {
+	position:absolute;
+	display:none;
+	width:550px;
+    z-index: 999;
+    top: 100px;
+}
+
+.closeLink {
+	float:right;
+	margin-right:-10px;
+	color:white ;
+	font-weight: bold; 
+	font-size:150%;
+}
