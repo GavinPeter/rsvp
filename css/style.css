@@ -85,21 +85,21 @@
 @-webkit-keyframes letter-out {
   0% {
     transform: translate3d(0, 0, 0);
-    box-shadow: inset 0 0px 30px -5px #b08c5b, 0 0 10px -5px;
+ 
   }
   100% {
     transform: translate3d(0, -748px, 0);
-    box-shadow: inset 0 0px 30px -5px #a87e50, 0 0 20px -5px;
+
   }
 }
 @keyframes letter-out {
   0% {
     transform: translate3d(0, 0, 0);
-    box-shadow: inset 0 0px 30px -5px #b08c5b, 0 0 10px -5px;
+
   }
   100% {
     transform: translate3d(0, -748px, 0);
-    box-shadow: inset 0 0px 30px -5px #a87e50, 0 0 20px -5px;
+
   }
 }
 body, html {
@@ -431,4 +431,64 @@ envelope cover css
 	color:white ;
 	font-weight: bold; 
 	font-size:150%;
+}
+
+
+.bg_heart {
+ //   position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -99;
+ }
+
+.heart {
+    position: absolute;
+    top: -50%;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -m-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+     z-index: -99;
+ }
+
+.heart:before {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 100%;
+     z-index: -99;
+}
+
+.heart:after {
+    position: absolute;
+    top: 0;
+    right: -50%;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 100%;
+     z-index: -99;
+}
+
+@-webkit-keyframes love {
+  0%{top:110%}
+}
+@-moz-keyframes love {
+  0%{top:110%}
+}
+@-ms-keyframes love {
+  0%{top:110%}
+}
+@keyframes love {
+  0%{top:110%}
 }
